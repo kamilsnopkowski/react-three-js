@@ -34,8 +34,19 @@ function App() {
               style={{ backgroundColor: 'black'}}
               camera={{ position: [3,3,3]}}
           >
-              <Box position={[1,1,0]}/>
+              <Box position={[-1,1,1]}/>
               <axesHelper args={[5]}/>
+              <points>
+                  {/*way of attaching properties to parents*/}
+                  {/*here single property */}
+                  {/*<geometry>*/}
+                  {/*    <vector3 attach='position' />*/}
+                  {/*</geometry>*/}
+                  {/*properties as parts of arrays*/}
+                  <geometry>
+                      <vector3 attachArray='verticies' />
+                  </geometry>
+              </points>
               <Orbit/>
           </Canvas>
       </div>
