@@ -2,6 +2,7 @@ import './App.css';
 import { Canvas, useFrame, useThree, extend } from '@react-three/fiber'
 import { useRef } from 'react'
 import { OrbitControls } from "three/addons/controls/OrbitControls";
+import * as THREE from 'three';
 extend({ OrbitControls })
 
 const Orbit = () => {
@@ -26,7 +27,8 @@ const Box = (props) => {
 }
 
 function App() {
-
+    const positions = new Float32Array(
+        [1,1,1]);
 
   return (
       <div className="webgl">
@@ -37,15 +39,14 @@ function App() {
               <Box position={[-1,1,1]}/>
               <axesHelper args={[5]}/>
               <points>
-                  {/*way of attaching properties to parents*/}
-                  {/*here single property */}
-                  {/*<geometry>*/}
-                  {/*    <vector3 attach='position' />*/}
-                  {/*</geometry>*/}
-                  {/*properties as parts of arrays*/}
-                  <geometry>
-                      <vector3 attachArray='verticies' />
-                  </geometry>
+                  <bufferGeometry attach="geometry">
+                      <bufferAttribute
+                          attach="attributes-position"
+                          count={positions.length / 3}
+                          array={positions}
+                          itemSize={3}
+                      />
+                  </bufferGeometry>
               </points>
               <Orbit/>
           </Canvas>
