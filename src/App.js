@@ -19,35 +19,42 @@ const Box = (props) => {
         ref.current.rotation.y+= 0.01;
     })
     return (
-        <mesh ref={ref} {...props} >
+        <mesh ref={ref} {...props} castShadow receiveShadow >
             <boxGeometry/>
-            <meshBasicMaterial color="red"/>
+            <meshStandardMaterial color="pink"/>
+        </mesh>
+    )
+}
+
+const Floor = (props) => {
+    return (
+        <mesh {...props} receiveShadow >
+            <boxGeometry args={[10,0.1,10]} />
+            <meshStandardMaterial />
         </mesh>
     )
 }
 
 function App() {
-    const positions = new Float32Array(
-        [1,1,1]);
-
   return (
       <div className="webgl">
           <Canvas
               style={{ backgroundColor: 'black'}}
               camera={{ position: [3,3,3]}}
+              shadows={true}
           >
-              <Box position={[-1,1,1]}/>
+              <Box position={[-1,1.5,1]}/>
+              <Floor  position={[0,-0.05,0]} />
+              <ambientLight intensity={0.3} color={'red'}/>
               <axesHelper args={[5]}/>
-              <points>
-                  <bufferGeometry attach="geometry">
-                      <bufferAttribute
-                          attach="attributes-position"
-                          count={positions.length / 3}
-                          array={positions}
-                          itemSize={3}
-                      />
-                  </bufferGeometry>
-              </points>
+              <pointLight  color={'#fff'}
+                           intensity={1}
+                           distance={10}
+                           position={[0,3,0]}
+                           castShadow
+                           shadow-mapSize-height={512}
+                           shadow-mapSize-width={512}
+              />
               <Orbit/>
           </Canvas>
       </div>
