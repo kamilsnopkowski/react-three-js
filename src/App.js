@@ -38,9 +38,12 @@ const Box = (props) => {
         ref.current.rotation.y+= 0.01;
     })
     return (
-        <mesh ref={ref} {...props} castShadow receiveShadow >
+        <mesh ref={ref} {...props} castShadow  >
             <boxGeometry/>
-            <meshStandardMaterial color="pink"/>
+            {/* main params for materials: opacity={1} transparent wireframe metalness={1} roughness={0} */}
+            {/*setting transparent, clearcoat=1 and transmission=1 on meshPhysicalMaterial */}
+            {/*makes it see through while still being light reflectable */}
+            <meshPhysicalMaterial color="pink" transparent roughness={0} clearcoat={1} transmission={0.5} reflectivity={1} side={THREE.DoubleSide}/>
         </mesh>
     )
 }
@@ -62,7 +65,8 @@ function App() {
               camera={{ position: [3,3,3]}}
               shadows={true}
           >
-              <Box position={[-1,1.5,1]}/>
+              <fog attach='fog' color={'black'} near={1} far={10}/>
+              <Box position={[3,1,3]} />
               <Floor  position={[0,-0.05,0]} />
               <ambientLight intensity={0.3} color={'red'}/>
               <axesHelper args={[5]}/>
