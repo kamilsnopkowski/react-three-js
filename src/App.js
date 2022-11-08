@@ -3,8 +3,26 @@ import { Canvas, useFrame, useThree, extend } from '@react-three/fiber'
 import { useRef } from 'react'
 import { OrbitControls } from "three/addons/controls/OrbitControls";
 import * as THREE from 'three';
+import { useHelper } from '@react-three/drei/native'
 extend({ OrbitControls })
 
+const PointLight = props => {
+    const light = useRef();
+    //remember to pass radius and color
+    useHelper(light, THREE.PointLightHelper,0.5,'cyan');
+    return(
+            <pointLight
+                ref={light}
+                color={'#fff'}
+                intensity={1}
+                distance={10}
+                position={[3,3,3]}
+                castShadow
+                shadow-mapSize-height={512}
+                shadow-mapSize-width={512}
+            />
+    )
+}
 const Orbit = () => {
     const { camera, gl } = useThree();
     //useThree works similar way to useFrame but it runs only once
@@ -12,6 +30,7 @@ const Orbit = () => {
         <orbitControls args={[camera, gl.domElement ]}/>
     )
 }
+
 const Box = (props) => {
     const ref = useRef(null);
     useFrame((state)=>{
@@ -47,14 +66,7 @@ function App() {
               <Floor  position={[0,-0.05,0]} />
               <ambientLight intensity={0.3} color={'red'}/>
               <axesHelper args={[5]}/>
-              <pointLight  color={'#fff'}
-                           intensity={1}
-                           distance={10}
-                           position={[0,3,0]}
-                           castShadow
-                           shadow-mapSize-height={512}
-                           shadow-mapSize-width={512}
-              />
+              <PointLight/>
               <Orbit/>
           </Canvas>
       </div>
