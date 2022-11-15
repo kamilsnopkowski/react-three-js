@@ -7,6 +7,7 @@ import Floor from './components/Floor'
 import Dragable from "./components/Dragable";
 import { Canvas, } from '@react-three/fiber'
 import { Suspense } from 'react'
+import { Physics } from '@react-three/cannon'
 
 function App() {
     return (
@@ -19,11 +20,13 @@ function App() {
                   shadows={true}
               >
                   <Background/>
-                  <Dragable>
-                      <Box position={[-3,1,3]} />
-                      <Box position={[3,1,3]} />
-                  </Dragable>
-                  <Floor position={[0,-0.05,0]} />
+                  <Physics>
+                      <Dragable>
+                          <Box position={[-3,1,3]} />
+                          <Box position={[3,1,3]} />
+                      </Dragable>
+                      <Floor position={[0,-0.05,0]} />
+                  </Physics>
                   <ambientLight intensity={0.3} color={'white'}/>
                   <axesHelper args={[5]}/>
                   <PointLight/>

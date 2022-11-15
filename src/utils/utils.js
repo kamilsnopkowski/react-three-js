@@ -1,1 +1,0 @@
-export const scale = (target, x,y,z) => target.scale.set(x || 1, y || 1, z || 1)
