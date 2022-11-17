@@ -1,5 +1,4 @@
 import './App.css';
-import Box from './components/Box'
 import PointLight from './components/PointLight'
 import Orbit from './components/Orbit'
 import Background from './components/Background'
@@ -8,6 +7,7 @@ import Dragable from "./components/Dragable";
 import { Canvas, } from '@react-three/fiber'
 import { Suspense } from 'react'
 import { Physics } from '@react-three/cannon'
+import Model from "./components/Model";
 
 function App() {
     return (
@@ -21,9 +21,18 @@ function App() {
               >
                   <Background/>
                   <Physics>
+                      <Model
+                          path="./models/tesla_model_3/scene.gltf"
+                          scale={[0.01, 0.01, 0.01]}
+                          position={[3,0.6,0]}
+                      />
+                      <Model
+                          path="./models/tesla_model_s/scene.gltf"
+                          scale={[0.013, 0.013, 0.013]}
+                          position={[-3,0.2,-0.8]}
+                      />
                       <Dragable>
-                          <Box position={[-3,1,3]} />
-                          <Box position={[3,1,3]} />
+
                       </Dragable>
                       <Floor position={[0,-0.05,0]} />
                   </Physics>

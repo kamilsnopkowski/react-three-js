@@ -6,7 +6,9 @@ extend({ OrbitControls })
 
 const Orbit = () => {
     const { camera, gl,scene } = useThree();
-    useEffect(() => scene.orbitControls.enabled = true,[])
+    useEffect(() => {
+        scene.orbitControls.enabled = true;
+    },[])
     return (
         <orbitControls args={[camera, gl.domElement ]} attach="orbitControls" enabled={false}/>
     )
