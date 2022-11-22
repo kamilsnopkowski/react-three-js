@@ -9,6 +9,7 @@ import { Suspense } from 'react'
 import { Physics } from '@react-three/cannon'
 import Cars from "./components/Cars";
 import CameraControls from "./components/CameraControls";
+import CameraButtons from "./components/CameraButtons";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
               </Canvas>
           </Suspense>
           <ColorPicker/>
+          <CameraButtons/>
       </div>
     );
 }

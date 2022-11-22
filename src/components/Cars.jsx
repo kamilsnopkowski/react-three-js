@@ -20,7 +20,7 @@ const Cars = () => {
             </Dragable>
             <Dragable transformGroup >
                 <BoundingBox
-                    //visible
+                    // visible
                     position={[-3,3,0]}
                     scale={[3.3,2.2,7.2]}
                     offset={[0,-0.8,0.2]}>
