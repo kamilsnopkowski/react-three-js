@@ -19,7 +19,7 @@ function App() {
           <Suspense fallback={null}>
               <Canvas
                   style={{ backgroundColor: 'black'}}
-                  camera={{ position: [3,3,5]}}
+                  camera={{ position: [8,2,5]}}
                   shadows={true}
               >
                   <CameraControls/>
@@ -30,7 +30,8 @@ function App() {
                   </Physics>
                   <ambientLight intensity={0.3} color={'white'}/>
                   <axesHelper args={[5]}/>
-                  <PointLight/>
+                  <PointLight position={[3,5,0]}/>
+                  <PointLight position={[-3,5,0]}/>
                   <Orbit/>
               </Canvas>
           </Suspense>

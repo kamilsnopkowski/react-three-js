@@ -2,18 +2,23 @@ import state from "../state";
 
 const CameraButtons = props => {
     const sets = {
+        //model3
      1: {
          position: [8,2,5],
          target: [3,3,0],
+         name: "Capot001_CAR_PAINT_0",
      },
+        //model s
       2: {
           position: [1,2.5,6],
           target: [-3,3,0],
+          name: "object005_bod_0"
       }
     }
     const handleClick  = num => {
         state.camera.position.set(...sets[num].position)
         state.camera.target.set(...sets[num].target)
+        state.activeMeshName = sets[num].name
         state.shouldUpdate = true
     };
     const style = {
