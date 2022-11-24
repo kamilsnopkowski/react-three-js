@@ -28,10 +28,19 @@ function App() {
                       <Cars/>
                       <Floor position={[0,-0.05,0]} />
                   </Physics>
+                  <directionalLight
+                      position={[6,3,0]}
+                      intensity={1}
+                      color={'white'}
+                      castShadow
+                      shadow-mapSize-height={1024}
+                      shadow-mapSize-width={1024}
+                      shadow-radius={10}
+                  />
                   <ambientLight intensity={0.3} color={'white'}/>
                   <axesHelper args={[5]}/>
-                  <PointLight position={[3,5,0]}/>
-                  <PointLight position={[-3,5,0]}/>
+                  <PointLight position={[3,7,0]}/>
+                  <PointLight position={[-3,7,0]}/>
                   <Orbit/>
               </Canvas>
           </Suspense>

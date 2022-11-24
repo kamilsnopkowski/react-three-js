@@ -13,8 +13,9 @@ const PointLight = ({ position = [0,5,0]}) => {
             distance={10}
             position={position}
             castShadow
-            shadow-mapSize-height={512}
-            shadow-mapSize-width={512}
+            shadow-mapSize-height={1024}
+            shadow-mapSize-width={1024}
+            shadow-radius={10}
         />
     )
 }
