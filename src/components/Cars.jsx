@@ -5,7 +5,9 @@ import Model from "./Model";
 const Cars = () => {
     return (
         <>
-            <Dragable transformGroup >
+            <Dragable
+                transformGroup
+            >
                 <BoundingBox
                     //visible
                     position={[3,3,0]}
@@ -18,7 +20,9 @@ const Cars = () => {
                 </BoundingBox>
 
             </Dragable>
-            <Dragable transformGroup >
+            <Dragable
+                transformGroup
+            >
                 <BoundingBox
                     // visible
                     position={[-3,3,0]}

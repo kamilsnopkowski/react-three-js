@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import state from '../state'
 
 const sharedStyles = {
     height: 50,
@@ -9,9 +10,8 @@ const sharedStyles = {
 
 const ColorPicker = props => {
     const handleClick = e => {
-        return
-        // if (!state.activeMesh) return;
-        // state.activeMesh.material.color = new THREE.Color(e.target.style.background)
+        if (!state.activeMesh) return;
+        state.activeMesh.material.color = new THREE.Color(e.target.style.background)
     }
     return (
         <div
