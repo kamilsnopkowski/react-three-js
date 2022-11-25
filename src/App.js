@@ -1,5 +1,4 @@
 import './App.css';
-import PointLight from './components/PointLight'
 import Orbit from './components/Orbit'
 import Background from './components/Background'
 import Floor from './components/Floor'
@@ -10,6 +9,7 @@ import { Physics } from '@react-three/cannon'
 import Cars from "./components/Cars";
 import CameraControls from "./components/CameraControls";
 import CameraButtons from "./components/CameraButtons";
+import Lights from "./components/Lights";
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
           <Suspense fallback={null}>
               <Canvas
                   style={{ backgroundColor: 'black'}}
-                  camera={{ position: [8,2,5]}}
+                  camera={{ position: [8,2,5] }}
                   shadows={true}
               >
                   <CameraControls/>
@@ -28,19 +28,8 @@ function App() {
                       <Cars/>
                       <Floor position={[0,-0.05,0]} />
                   </Physics>
-                  <directionalLight
-                      position={[6,3,0]}
-                      intensity={1}
-                      color={'white'}
-                      castShadow
-                      shadow-mapSize-height={1024}
-                      shadow-mapSize-width={1024}
-                      shadow-radius={10}
-                  />
-                  <ambientLight intensity={0.3} color={'white'}/>
-                  <axesHelper args={[5]}/>
-                  <PointLight position={[3,7,0]}/>
-                  <PointLight position={[-3,7,0]}/>
+                  <Lights/>
+                  {/*<axesHelper args={[5]}/>*/}
                   <Orbit/>
               </Canvas>
           </Suspense>

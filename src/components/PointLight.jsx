@@ -4,7 +4,7 @@ import * as THREE from "three";
 
 const PointLight = ({ position = [0,5,0]}) => {
     const light = useRef();
-    useHelper(light, THREE.PointLightHelper,0.5,'cyan');
+    // useHelper(light, THREE.PointLightHelper,0.5,'cyan');
     return(
         <pointLight
             ref={light}
